@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+        function showFoodDetail(food) {
+            // Hide Page 1 and show Page 2
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
 
+            // Populate food detail in Page 2 based on the selected food
+            var foodNameElement = document.getElementById('foodName');
+            var foodImageElement = document.getElementById('foodImage');
+            var foodDescriptionElement = document.getElementById('foodDescription');
+
+            // Set food details based on the selected food
+            if (food === 'Pizza') {
+                foodNameElement.textContent = 'Pizza';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.';
+            } else if (food === 'Burger') {
+                foodNameElement.textContent = 'Burger';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.';
+            } else if (food === 'Pasta') {
+                foodNameElement.textContent = 'Pasta';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.';
+            }
+        }
+
+        function showPage(pageId) {
+            if (pageId === 'page1') {
+                document.getElementById('page1').style.display = 'block';
+                document.getElementById('page2').style.display = 'none';
+            } else if (pageId === 'page2') {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'block';
+            }
+        }
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,44 +110,6 @@
         <p id="foodDescription"></p>
         <button id="backBtn" onclick="showPage('page1')">Back</button>
     </div>
-
-    <script>
-        function showFoodDetail(food) {
-            // Hide Page 1 and show Page 2
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'block';
-
-            // Populate food detail in Page 2 based on the selected food
-            var foodNameElement = document.getElementById('foodName');
-            var foodImageElement = document.getElementById('foodImage');
-            var foodDescriptionElement = document.getElementById('foodDescription');
-
-            // Set food details based on the selected food
-            if (food === 'Pizza') {
-                foodNameElement.textContent = 'Pizza';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.';
-            } else if (food === 'Burger') {
-                foodNameElement.textContent = 'Burger';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.';
-            } else if (food === 'Pasta') {
-                foodNameElement.textContent = 'Pasta';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.';
-            }
-        }
-
-        function showPage(pageId) {
-            if (pageId === 'page1') {
-                document.getElementById('page1').style.display = 'block';
-                document.getElementById('page2').style.display = 'none';
-            } else if (pageId === 'page2') {
-                document.getElementById('page1').style.display = 'none';
-                document.getElementById('page2').style.display = 'block';
-            }
-        }
-    </script>
 </body>
 
 </html>
