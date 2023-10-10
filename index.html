@@ -4,36 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foods List</title>
+    <title>Food List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .food-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .food-list-item {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .food-detail {
+            display: none;
+        }
+
+        #backBtn, #forwardBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="food-list-page">
-        <h1>Foods List</h1>
-        <ul id="food-list">
-            <li><a href="food-detail.html?id=1">Pizza</a></li>
-            <li><a href="food-detail.html?id=2">Burger</a></li>
-            <li><a href="food-detail.html?id=3">Salad</a></li>
-            <li><a href="food-detail.html?id=4">Pasta</a></li>
-        </ul>
+    <ul class="food-list">
+        <li class="food-list-item" onclick="showFoodDetail('Pizza')">Pizza</li>
+        <li class="food-list-item" onclick="showFoodDetail('Burger')">Burger</li>
+        <li class="food-list-item" onclick="showFoodDetail('Pasta')">Pasta</li>
+        <!-- Add more food items as needed -->
+    </ul>
+
+    <div id="Pizza" class="food-detail">
+        <h2>Pizza</h2>
+        <img src="pizza.jpg" alt="Pizza Image" width="300">
+        <p>Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.</p>
     </div>
 
-    <div id="food-detail-page" style="display: none;">
-        <h1>Food Detail</h1>
-        <h2 id="food-name"></h2>
-        <p id="description"></p>
-        <button onclick="goBack()">Back</button>
+    <div id="Burger" class="food-detail">
+        <h2>Burger</h2>
+        <img src="burger.jpg" alt="Burger Image" width="300">
+        <p>A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.</p>
     </div>
+
+    <div id="Pasta" class="food-detail">
+        <h2>Pasta</h2>
+        <img src="pasta.jpg" alt="Pasta Image" width="300">
+        <p>Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.</p>
+    </div>
+
+    <button id="backBtn" onclick="history.back()">Back</button>
+    <button id="forwardBtn" onclick="history.forward()">Forward</button>
 
     <script>
-        function goNext() {
-            document.getElementById('food-list-page').style.display = 'none';
-            document.getElementById('food-detail-page').style.display = 'block';
-        }
+        function showFoodDetail(food) {
+            // Hide all food details
+            var foodDetails = document.querySelectorAll('.food-detail');
+            foodDetails.forEach(function(detail) {
+                detail.style.display = 'none';
+            });
 
-        function goBack() {
-            document.getElementById('food-list-page').style.display = 'block';
-            document.getElementById('food-detail-page').style.display = 'none';
+            // Show the selected food detail
+            var selectedFood = document.getElementById(food);
+            selectedFood.style.display = 'block';
         }
     </script>
 </body>
