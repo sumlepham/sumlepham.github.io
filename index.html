@@ -5,47 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foods List</title>
-    <style>
-        .food-list-item {
-            cursor: pointer;
-            margin-bottom: 10px;
-            color: blue;
-        }
-    </style>
 </head>
 
 <body>
-    <h1>Foods List</h1>
-    <div id="food-list">
-        <div class="food-list-item" onclick="showFoodDetail(1)">Pizza</div>
-        <div class="food-list-item" onclick="showFoodDetail(2)">Burger</div>
-        <div class="food-list-item" onclick="showFoodDetail(3)">Salad</div>
-        <div class="food-list-item" onclick="showFoodDetail(4)">Pasta</div>
+    <div id="food-list-page">
+        <h1>Foods List</h1>
+        <ul id="food-list">
+            <li><a href="food-detail.html?id=1">Pizza</a></li>
+            <li><a href="food-detail.html?id=2">Burger</a></li>
+            <li><a href="food-detail.html?id=3">Salad</a></li>
+            <li><a href="food-detail.html?id=4">Pasta</a></li>
+        </ul>
     </div>
 
-    <div id="food-detail" style="display: none;">
+    <div id="food-detail-page" style="display: none;">
+        <h1>Food Detail</h1>
         <h2 id="food-name"></h2>
         <p id="description"></p>
+        <button onclick="goBack()">Back</button>
     </div>
 
     <script>
-        const foods = [
-            { id: 1, name: 'Pizza', description: 'Delicious Italian pizza with various toppings.' },
-            { id: 2, name: 'Burger', description: 'Classic hamburger with cheese, lettuce, and tomatoes.' },
-            { id: 3, name: 'Salad', description: 'Fresh green salad with mixed vegetables and vinaigrette.' },
-            { id: 4, name: 'Pasta', description: 'Spaghetti with marinara sauce and Parmesan cheese.' }
-        ];
+        function goNext() {
+            document.getElementById('food-list-page').style.display = 'none';
+            document.getElementById('food-detail-page').style.display = 'block';
+        }
 
-        function showFoodDetail(foodId) {
-            const selectedFood = foods.find(food => food.id === foodId);
-
-            if (selectedFood) {
-                document.getElementById('food-name').textContent = selectedFood.name;
-                document.getElementById('description').textContent = selectedFood.description;
-                document.getElementById('food-detail').style.display = 'block';
-            } else {
-                document.getElementById('food-detail').style.display = 'none';
-            }
+        function goBack() {
+            document.getElementById('food-list-page').style.display = 'block';
+            document.getElementById('food-detail-page').style.display = 'none';
         }
     </script>
 </body>
