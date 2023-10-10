@@ -31,6 +31,18 @@
         .food-detail {
             display: none;
         }
+
+        #backBtn, #forwardBtn {
+            margin-top: 20px;
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -52,6 +64,7 @@
             </li>
             <!-- Add more food items as needed -->
         </ul>
+        <button id="forwardBtn" onclick="showPage('page2')">Next</button>
     </div>
 
     <!-- Page 2: Food Detail -->
@@ -59,6 +72,7 @@
         <h2 id="foodName"></h2>
         <img id="foodImage" src="" alt="Food Image" width="300">
         <p id="foodDescription"></p>
+        <button id="backBtn" onclick="showPage('page1')">Back</button>
     </div>
 
     <script>
@@ -85,6 +99,16 @@
                 foodNameElement.textContent = 'Pasta';
                 foodImageElement.src = 'https://via.placeholder.com/300';
                 foodDescriptionElement.textContent = 'Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.';
+            }
+        }
+
+        function showPage(pageId) {
+            if (pageId === 'page1') {
+                document.getElementById('page1').style.display = 'block';
+                document.getElementById('page2').style.display = 'none';
+            } else if (pageId === 'page2') {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'block';
             }
         }
     </script>
