@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food List</title>
+    <title>Food App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,68 +16,76 @@
         }
 
         .food-list-item {
+            display: flex;
+            align-items: center;
             margin: 10px;
             cursor: pointer;
+        }
+
+        .food-list-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
         }
 
         .food-detail {
             display: none;
         }
-
-        #backBtn, #forwardBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
 <body>
-    <ul class="food-list">
-        <li class="food-list-item" onclick="showFoodDetail('Pizza')">Pizza</li>
-        <li class="food-list-item" onclick="showFoodDetail('Burger')">Burger</li>
-        <li class="food-list-item" onclick="showFoodDetail('Pasta')">Pasta</li>
-        <!-- Add more food items as needed -->
-    </ul>
-
-    <div id="Pizza" class="food-detail">
-        <h2>Pizza</h2>
-        <img src="pizza.jpg" alt="Pizza Image" width="300">
-        <p>Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.</p>
+    <!-- Page 1: List of Food -->
+    <div id="page1">
+        <ul class="food-list">
+            <li class="food-list-item" onclick="showFoodDetail('Pizza')">
+                <img src="https://via.placeholder.com/50" alt="Pizza Thumbnail">
+                Pizza
+            </li>
+            <li class="food-list-item" onclick="showFoodDetail('Burger')">
+                <img src="https://via.placeholder.com/50" alt="Burger Thumbnail">
+                Burger
+            </li>
+            <li class="food-list-item" onclick="showFoodDetail('Pasta')">
+                <img src="https://via.placeholder.com/50" alt="Pasta Thumbnail">
+                Pasta
+            </li>
+            <!-- Add more food items as needed -->
+        </ul>
     </div>
 
-    <div id="Burger" class="food-detail">
-        <h2>Burger</h2>
-        <img src="burger.jpg" alt="Burger Image" width="300">
-        <p>A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.</p>
+    <!-- Page 2: Food Detail -->
+    <div id="page2" class="food-detail">
+        <h2 id="foodName"></h2>
+        <img id="foodImage" src="" alt="Food Image" width="300">
+        <p id="foodDescription"></p>
     </div>
-
-    <div id="Pasta" class="food-detail">
-        <h2>Pasta</h2>
-        <img src="pasta.jpg" alt="Pasta Image" width="300">
-        <p>Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.</p>
-    </div>
-
-    <button id="backBtn" onclick="history.back()">Back</button>
-    <button id="forwardBtn" onclick="history.forward()">Forward</button>
 
     <script>
         function showFoodDetail(food) {
-            // Hide all food details
-            var foodDetails = document.querySelectorAll('.food-detail');
-            foodDetails.forEach(function(detail) {
-                detail.style.display = 'none';
-            });
+            // Hide Page 1 and show Page 2
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
 
-            // Show the selected food detail
-            var selectedFood = document.getElementById(food);
-            selectedFood.style.display = 'block';
+            // Populate food detail in Page 2 based on the selected food
+            var foodNameElement = document.getElementById('foodName');
+            var foodImageElement = document.getElementById('foodImage');
+            var foodDescriptionElement = document.getElementById('foodDescription');
+
+            // Set food details based on the selected food
+            if (food === 'Pizza') {
+                foodNameElement.textContent = 'Pizza';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.';
+            } else if (food === 'Burger') {
+                foodNameElement.textContent = 'Burger';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.';
+            } else if (food === 'Pasta') {
+                foodNameElement.textContent = 'Pasta';
+                foodImageElement.src = 'https://via.placeholder.com/300';
+                foodDescriptionElement.textContent = 'Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.';
+            }
         }
     </script>
 </body>
