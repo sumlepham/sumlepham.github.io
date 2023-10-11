@@ -1,118 +1,71 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-<script>
-        function showFoodDetail(food) {
-            // Hide Page 1 and show Page 2
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'block';
 
-            // Populate food detail in Page 2 based on the selected food
-            var foodNameElement = document.getElementById('foodName');
-            var foodImageElement = document.getElementById('foodImage');
-            var foodDescriptionElement = document.getElementById('foodDescription');
-
-            // Set food details based on the selected food
-            if (food === 'Pizza') {
-                foodNameElement.textContent = 'Pizza';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'Pizza is a popular Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients.';
-            } else if (food === 'Burger') {
-                foodNameElement.textContent = 'Burger';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'A hamburger, beefburger, burger, or sandwich, is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.';
-            } else if (food === 'Pasta') {
-                foodNameElement.textContent = 'Pasta';
-                foodImageElement.src = 'https://via.placeholder.com/300';
-                foodDescriptionElement.textContent = 'Pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water and formed into sheets and cut, or extruded, into various shapes.';
-            }
-        }
-
-        function showPage(pageId) {
-            if (pageId === 'page1') {
-                document.getElementById('page1').style.display = 'block';
-                document.getElementById('page2').style.display = 'none';
-            } else if (pageId === 'page2') {
-                document.getElementById('page1').style.display = 'none';
-                document.getElementById('page2').style.display = 'block';
-            }
-        }
-        function handleNativeCall() {
-            alert("Received from native: ");
-        }
-    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food App</title>
+    <title>Lucky Draw Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
-        .food-list {
-            list-style-type: none;
-            padding: 0;
+        .spinner-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
         }
 
-        .food-list-item {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            cursor: pointer;
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 10px solid transparent;
+            border-top-color: #3498db;
+            animation: spin 2s linear infinite;
         }
 
-        .food-list-item img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .food-detail {
-            display: none;
-        }
-
-        #backBtn, #forwardBtn {
+        #winner {
+            font-size: 24px;
             margin-top: 20px;
-            cursor: pointer;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
-    <!-- Page 1: List of Food -->
-    <div id="page1">
-        <ul class="food-list">
-            <li class="food-list-item" onclick="showFoodDetail('Pizza')">
-                <img src="https://via.placeholder.com/50" alt="Pizza Thumbnail">
-                Pizza
-            </li>
-            <li class="food-list-item" onclick="showFoodDetail('Burger')">
-                <img src="https://via.placeholder.com/50" alt="Burger Thumbnail">
-                Burger
-            </li>
-            <li class="food-list-item" onclick="showFoodDetail('Pasta')">
-                <img src="https://via.placeholder.com/50" alt="Pasta Thumbnail">
-                Pasta
-            </li>
-            <!-- Add more food items as needed -->
-        </ul>
-        <button id="forwardBtn" onclick="showPage('page2')">Next</button>
+    <h1>Lucky Draw Game</h1>
+
+    <div class="spinner-container">
+        <div class="spinner"></div>
     </div>
 
-    <!-- Page 2: Food Detail -->
-    <div id="page2" class="food-detail">
-        <h2 id="foodName"></h2>
-        <img id="foodImage" src="" alt="Food Image" width="300">
-        <p id="foodDescription"></p>
-        <button id="backBtn" onclick="showPage('page1')">Back</button>
-    </div>
+    <ul id="nameList">
+        <li>John</li>
+        <li>Amy</li>
+        <li>Michael</li>
+        <li>Emma</li>
+        <!-- Add more names as needed -->
+    </ul>
+
+    <button onclick="spinWheel()">Spin</button>
+
+    <div id="winner"></div>
+
+    <script>
+        function spinWheel() {
+            var nameList = document.getElementById('nameList').getElementsByTagName('li');
+            var randomIndex = Math.floor(Math.random() * nameList.length);
+            var winner = nameList[randomIndex].textContent;
+            document.getElementById('winner').textContent = 'Winner: ' + winner;
+        }
+    </script>
 </body>
 
 </html>
