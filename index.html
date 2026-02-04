@@ -1,71 +1,115 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Draw Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Privio</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 24px;
+      background-color: #ffffff;
+      color: #1c1c1e;
+    }
 
-        .spinner-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-        }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .spinner {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 10px solid transparent;
-            border-top-color: #3498db;
-            animation: spin 2s linear infinite;
-        }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    h2 {
+      font-size: 20px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
 
-        #winner {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-    </style>
+    p {
+      margin: 12px 0;
+    }
+
+    ul {
+      margin: 12px 0 12px 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .updated {
+      font-size: 14px;
+      color: #6e6e73;
+    }
+
+    .email {
+      font-weight: 500;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Lucky Draw Game</h1>
+  <div class="container">
+    <h1>Privacy Policy for Privio</h1>
+    <p class="updated">Last updated: January 2026</p>
 
-    <div class="spinner-container">
-        <div class="spinner"></div>
-    </div>
+    <p>
+      Privio ("we", "our", or "us") operates the Privio mobile application.
+    </p>
 
-    <ul id="nameList">
-        <li>John</li>
-        <li>Amy</li>
-        <li>Michael</li>
-        <li>Emma</li>
-        <!-- Add more names as needed -->
+    <h2>Information Collection and Use</h2>
+    <p>
+      We do not collect, store, or share any personally identifiable information from users.
+    </p>
+    <p>
+      The app may store data locally on your device (such as files, images, videos, or notes created by you).
+      This data never leaves your device unless you explicitly choose to share it.
+    </p>
+
+    <h2>Third-Party Services</h2>
+    <p>
+      The app may use third-party services that collect information used to identify you, including:
+    </p>
+    <ul>
+      <li>Google Play Services</li>
+      <li>Google AdMob (if enabled)</li>
     </ul>
+    <p>
+      These services operate under their own privacy policies.
+    </p>
 
-    <button onclick="spinWheel()">Spin</button>
+    <h2>Advertising</h2>
+    <p>
+      If ads are shown, they may use advertising identifiers as permitted by Google Play policies.
+      Users can opt out of personalized ads through device settings.
+    </p>
 
-    <div id="winner"></div>
+    <h2>Children’s Privacy</h2>
+    <p>
+      This app does not knowingly collect personal information from children under the age of 13.
+    </p>
 
-    <script>
-        function spinWheel() {
-            var nameList = document.getElementById('nameList').getElementsByTagName('li');
-            var randomIndex = Math.floor(Math.random() * nameList.length);
-            var winner = nameList[randomIndex].textContent;
-            document.getElementById('winner').textContent = 'Winner: ' + winner;
-        }
-    </script>
+    <h2>Security</h2>
+    <p>
+      We value your trust and strive to use commercially acceptable means of protecting your data.
+      However, no method of storage is 100% secure.
+    </p>
+
+    <h2>Changes to This Privacy Policy</h2>
+    <p>
+      We may update our Privacy Policy from time to time.
+      Changes will be posted on this page.
+    </p>
+
+    <h2>Contact Us</h2>
+    <p>
+      If you have any questions about this Privacy Policy, contact us at:
+    </p>
+    <p class="email">caothucolieu@gmail.com</p>
+  </div>
 </body>
-
 </html>
