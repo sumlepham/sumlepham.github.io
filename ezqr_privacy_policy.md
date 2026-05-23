@@ -1,12 +1,3 @@
-<!--
-  TODO before publishing:
-    - Developer/company name:  <!-- TODO: fill in -->
-    - Contact email:           <!-- TODO: fill in -->
-    - Host this file at a public URL and paste that URL into App Store Connect
-      and Google Play. The disclosures below MUST match Apple's "App Privacy"
-      labels and Google Play's "Data safety" form.
--->
-
 # Privacy Policy — EZ QRCode
 
 **Effective date:** 23 May 2026
